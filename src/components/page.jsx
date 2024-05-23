@@ -34,7 +34,39 @@
                     <div align='left'>
                         <span style={{fontSize: 28}}>RJ000A | 2032-11-17</span>
                         <br />
-                        <span style={{fontSize: 14}}>Конвекция: Actual365Fixed  Базис: Actual365Fixed</span>
+                        {/* <span style={{fontSize: 14}}>Конвекция: Actual365Fixed  Базис: Actual365Fixed</span> */}
+                        <Stack direction={'row'} mt={2} spacing={2} >
+                            <FormControl fullWidth>
+                                <InputLabel id='demo-simple-select-label'>Конвекция</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={worstValue}
+                                        label="worst"
+                                        onChange={handleSelectChange}
+                                        style={{height: 'fit-content'}}
+                                    >
+                                        <MenuItem value={10}> Actual365Fixed</MenuItem>
+                                        <MenuItem value={20}> Actual365Fixed</MenuItem>
+                                        <MenuItem value={30}> Actual365Fixed</MenuItem>
+                                    </Select>
+                            </FormControl>
+                            <FormControl fullWidth>
+                                <InputLabel id='demo-simple-select-label'>Базис</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={worstValue}
+                                        label="worst"
+                                        onChange={handleSelectChange}
+                                        style={{height: 'fit-content'}}
+                                    >
+                                        <MenuItem value={10}> Actual365Fixed</MenuItem>
+                                        <MenuItem value={20}> Actual365Fixed</MenuItem>
+                                        <MenuItem value={30}> Actual365Fixed</MenuItem>
+                                    </Select>
+                            </FormControl>
+                        </Stack>
                     </div>
                     <div>
                        <Button variant="outlined" startIcon={<WifiTetheringIcon />} style={{margin: '0 16px'}}>
@@ -52,35 +84,38 @@
                     <Box width='20%'>
                     <Input
                         defaultValue={'-241,8%'}
-                        endAdornment={<InputAdornment position="start">Spread</InputAdornment>}
+                        // endAdornment={<InputAdornment position="start">Spread</InputAdornment>}
                         aria-describedby="standard-weight-helper-text"
                         inputProps={{
                         // 'aria-label': 'weight',
                         }}
                         style={{height: 'fit-content'}}
                     />
+                    <h5 align='left'>Spread</h5>
                     </Box>
                     <Box width='20%'>
                     <Input
                         defaultValue={'+90%'}
-                        endAdornment={<InputAdornment position="start">Price</InputAdornment>}
+                        //endAdornment={<InputAdornment position="start">Price</InputAdornment>}
                         aria-describedby="standard-weight-helper-text"
                         inputProps={{
                         // 'aria-label': 'weight',
                         }}
                         style={{height: 'fit-content'}}
                     />
+                    <h5 align='left'>Price</h5>
                     </Box>
                     <Box width='20%'>
                     <Input
                         defaultValue={'+11.253%'}
-                        endAdornment={<InputAdornment position="start">Yield</InputAdornment>}
+                        //endAdornment={<InputAdornment position="start">Yield</InputAdornment>}
                         aria-describedby="standard-weight-helper-text"
                         inputProps={{
                         // 'aria-label': 'weight',
                         }}
                         style={{height: 'fit-content'}}
                     />
+                    <h5 align='left'>Yield</h5>
                     </Box>
                     {/* <TextField value='-241,8' defaultValue='-241,8%' label="Option1" variant="standard" style={{margin: '0 16px'}}/>
                     <TextField value='+90%' label="Option2" variant="standard" style={{margin: '0 16px'}}/>
@@ -131,39 +166,13 @@
                     </h3>
                     <Stack direction='row' spacing={4} marginTop='16px'>
                         <Box width={'30%'}>
-                            <Input
-                                defaultValue={'2.52%'}
-                                endAdornment={<InputAdornment position="start">Mac. Dur</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                'aria-label': 'Max,Durrr',
-                                }}
-                                style={{height: 'fit-content'}}
-                                disabled
-                            />
+                            <TextField disabled id="outlined-basic2" label={'Mac. Dur'} variant="outlined" defaultValue='2.62'/>
                         </Box>
                         <Box width={'30%'}>
-                            <Input
-                                defaultValue={'2.26'}
-                                endAdornment={<InputAdornment position="start">Mod.Dur</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                                disabled={true}
-                            />
+                            <TextField disabled id="outlined-basic2" label={'Mod. Dur'} variant="outlined" defaultValue='2.26'/>
                         </Box>
                         <Box width={'30%'}>
-                            <Input
-                                defaultValue={'92.3331'}
-                                endAdornment={<InputAdornment position="start">Rate $</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                            />
+                            <TextField id="outlined-basic2" label={'Rate $'} variant="outlined" defaultValue='92.12365'/>
                         </Box>
                         <Box width={'10%'}>
                             <Button><SyncIcon/></Button>
@@ -188,27 +197,10 @@
                             </FormControl>
                         </Box>
                         <Box width={'30%'}>
-                            <Input
-                                defaultValue={'RUB : RUB'}
-                                startAdornment={<InputAdornment position="start">Cur Rate</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                                disabled={true}
-                            />
+                            <TextField disabled id="outlined-basic2" label={'Cur Rate'} variant="outlined" defaultValue='RUB : EUB'/>
                         </Box>
                         <Box width={'30%'}>
-                            <Input
-                                defaultValue={''}
-                                //endAdornment={<InputAdornment position="start">Rate $</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                            />
+                            <TextField id="outlined-basic2" label={''} variant="outlined" defaultValue='1'/>
                         </Box>
                         <Box width={'10%'}>
                             <Button><SyncIcon/></Button>
@@ -219,92 +211,79 @@
                     <h3 align='left'>
                         Invoice
                     </h3>
-                    <Stack direction='row' spacing={4} marginTop='16px'>
-                        <Box width={'30%'}>
-                        {/* <TextField id="outlined-basic" label={`Face+<CompareArrowsIcon/>`} variant="outlined" /> */}
-                            <Input
-                                defaultValue={'10 000 000 M'}
-                                endAdornment={<InputAdornment position="start">Face <CompareArrowsIcon/></InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                'aria-label': 'Max,Durrr',
-                                }}
-                                style={{height: 'fit-content'}}
-                            />
-                        </Box>
-                        <Box width={'30%'}>
-                            <Input
-                                defaultValue={'2.26'}
-                                endAdornment={<InputAdornment position="start">Sinc Factor</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                                disabled
-                            />
-                        </Box>
-                        <Box width={'30%'}>
-                            <Input
-                                defaultValue={'-22077.0123'}
-                                endAdornment={<InputAdornment position="start">DV01</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                            />
-                        </Box>
-                        <Box width={'10%'}>
-                            <Button><SyncIcon/></Button>
-                        </Box>
+                    <Stack direction={'column'} spacing={4}>
+                        <Stack direction='row' spacing={4}>
+                            <Box width={'33.33%'}>
+                                <TextField id="outlined-basic1" label={'Face*'} variant="outlined" defaultValue='10 000 000 M'/>
+                                {/* <CompareArrowsIcon/> */}
+                            </Box>
+                            <Box width={'33.33%'}>
+                                <TextField disabled id="outlined-basic2" label={'Sinc Factor'} variant="outlined" defaultValue='1'/>
+                            </Box>
+                            <Box width={'33.33%'}>
+                                <TextField disabled id="outlined-basic3" label={'DV01'} variant="outlined" defaultValue='-22077.123 $'/>
+                            </Box>
+                        </Stack>
+                        <Stack direction='row' spacing={4}>
+                            <Box width={'33.33%'}>
+                                <TextField id="outlined-basic" label={'Principal'} variant="outlined" defaultValue='9 000 000 000'/>
+                            </Box>
+                            <Box width={'33.33%'}>
+                                <TextField id="outlined-basic" label={'Accrued'} variant="outlined" defaultValue='123 000 000'/>
+                            </Box>
+                            <Box width={'33.33%'}>
+                                <TextField id="outlined-basic" label={'AccruedDays'} variant="outlined" defaultValue='72'/>
+                            </Box>
+                        </Stack>
+                        <Stack direction={'row'} spacing={6} justifyContent="flex-end">
+                            <h5>Total Sum</h5>
+                            <TextField id="outlined-basic" variant="outlined" defaultValue='9 132 000 000'/>
+                        </Stack>
                     </Stack>
-                    <Stack direction='row' spacing={4} marginTop='16px'>
-                        <Box width={'30%'}>
-                            <FormControl fullWidth>
-                            <InputLabel id='demo-simple-select-label'>Sttl.Currency</InputLabel>
+                </Paper>
+            </Stack>
+            <Stack direction={'row'} justifyContent="space-between" alignItems="flex-end">
+                <Box>
+                    <h5 align='left'>Calc To</h5>
+                    <Stack direction={'row'} spacing={4}>
+                        <FormControl fullWidth>
+                            <InputLabel id='demo-simple-select-label'>Interpolation</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     value={worstValue}
-                                    label="Sttl.Currency"
+                                    label="Interpolation"
                                     onChange={handleSelectChange}
                                     style={{height: 'fit-content'}}
                                 >
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    <MenuItem value={3}>Interpolation</MenuItem>
+                                    <MenuItem value={2}>Outerpolation</MenuItem>
+                                    <MenuItem value={1}>Somepolation</MenuItem>
                                 </Select>
-                            </FormControl>
-                        </Box>
-                        <Box width={'30%'}>
-                            <Input
-                                defaultValue={'RUB : RUB'}
-                                startAdornment={<InputAdornment position="start">Cur Rate</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                                disabled={true}
-                            />
-                        </Box>
-                        <Box width={'30%'}>
-                            <Input
-                                defaultValue={''}
-                                //endAdornment={<InputAdornment position="start">Rate $</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                            />
-                        </Box>
-                        <Box width={'10%'}>
+                        </FormControl>
+                        <TextField id="outlined-basic" variant="outlined" defaultValue='13.518'/>
+                        <Box>
                             <Button><SyncIcon/></Button>
                         </Box>
                     </Stack>
-                </Paper>
+                </Box>
+                <Box>
+                    <FormControl fullWidth>
+                        <InputLabel id='demo-simple-select-label'>Кривая ОФЗ</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={worstValue}
+                                label="Кривая ОФЗ"
+                                onChange={handleSelectChange}
+                                style={{height: 'fit-content', width: '160px'}}
+                            >
+                                <MenuItem value={4}>Кривая ОФЗ</MenuItem>
+                                <MenuItem value={5}>Кривая ФЗ</MenuItem>
+                                <MenuItem value={6}>Ровная и четкая</MenuItem>
+                            </Select>
+                    </FormControl>
+                    </Box>
             </Stack>
             {/* <Autocomplete
                 disablePortal
@@ -326,6 +305,7 @@
                 <span style={{ margin: '0 16px'}}><Label title='privet' subtitle={'world'} style={{ padding: '16px'}}/></span>
             </div> */}
             <br />
+
             <LineChart
                 xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
                 series={[
@@ -333,8 +313,8 @@
                     data: [2, 5.5, 2, 8.5, 1.5, 5],
                     },
                 ]}
-                width={500}
-                height={300}
+                width={1200}
+                height={500}
             />
         </div>
     )
