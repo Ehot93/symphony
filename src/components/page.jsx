@@ -12,6 +12,8 @@
  import { useState } from "react";
  import SyncIcon from '@mui/icons-material/Sync';
  import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+ import { ThemeProvider } from '@mui/material/styles';
+ import { paperTheme, fontColors, inputTheme } from '../share/Themes'
 
  
  const Page = () => {
@@ -27,12 +29,16 @@
       }
 
     return(
-        <div style={{padding: '24px'}}>
+        <div style={{padding: '24px', background: fontColors.background}}>
         {/* <div style={{padding: '24px', background: 'linear-gradient(0deg, rgba(12,24,32,1) 100%, rgba(3,11,20,1) 50%)'}}> */}
+        <ThemeProvider theme={paperTheme}>
             <Paper elevation={1} display={'flex'} sx={{padding: '16px'}}>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                     <div align='left'>
-                        <span style={{fontSize: 28}}>RJ000A | 2032-11-17</span>
+                        <span style={{fontSize: 28}}>
+                            <span style={{color: fontColors.white1}}>RJ000A</span>
+                            <span style={{color: fontColors.gray}}>| 2032-11-17</span>
+                         </span>
                         <br />
                         <span style={{fontSize: 14}}>Конвекция: Actual365Fixed  Базис: Actual365Fixed</span>
                     </div>
@@ -50,15 +56,17 @@
                 </div>
                 <Stack justifyContent={'start'} spacing={4} direction='row'>
                     <Box width='20%'>
-                    <Input
-                        defaultValue={'-241,8%'}
-                        endAdornment={<InputAdornment position="start">Spread</InputAdornment>}
-                        aria-describedby="standard-weight-helper-text"
-                        inputProps={{
-                        // 'aria-label': 'weight',
-                        }}
-                        style={{height: 'fit-content'}}
-                    />
+                        <ThemeProvider theme={inputTheme}>
+                            <Input
+                                defaultValue={'-241,8%'}
+                                endAdornment={<InputAdornment position="start">Spread</InputAdornment>}
+                                aria-describedby="standard-weight-helper-text"
+                                inputProps={{
+                                // 'aria-label': 'weight',
+                                }}
+                                style={{height: 'fit-content'}}
+                            />
+                    </ThemeProvider>
                     </Box>
                     <Box width='20%'>
                     <Input
@@ -124,6 +132,7 @@
                     </Box>
                 </Stack>
             </Paper>
+            </ThemeProvider>   
             <Stack direction='row' spacing={5} style={{marginTop: '20px'}}>
                 <Paper elevation={1} style={{padding: '20px'}}>
                     <h3 align='left'>
