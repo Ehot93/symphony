@@ -13,7 +13,7 @@
  import SyncIcon from '@mui/icons-material/Sync';
  import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
  import { ThemeProvider } from '@mui/material/styles';
- import { paperTheme, fontColors, inputTheme } from '../share/Themes'
+ import { paperTheme, fontColors } from '../share/Themes'
 
  
  const Page = () => {
@@ -40,13 +40,11 @@
                             <span style={{color: fontColors.gray}}>| 2032-11-17</span>
                          </span>
                         <br />
-                        {/* <span style={{fontSize: 14}}>Конвекция: Actual365Fixed  Базис: Actual365Fixed</span> */}
                         <Stack direction={'row'} mt={2} spacing={2} >
-                            <FormControl fullWidth>
-                                <InputLabel id='demo-simple-select-label'>Конвекция</InputLabel>
+                            <FormControl style={{borderRadius: '40px'}} fullWidth>
+                                <InputLabel id='demo-simple-select-label1'>Конвекция</InputLabel>
                                     <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
+                                        labelId="demo-simple-select-label1"
                                         value={worstValue}
                                         label="worst"
                                         onChange={handleSelectChange}
@@ -58,10 +56,9 @@
                                     </Select>
                             </FormControl>
                             <FormControl fullWidth>
-                                <InputLabel id='demo-simple-select-label'>Базис</InputLabel>
+                                <InputLabel id='demo-simple-select-label2'>Базис</InputLabel>
                                     <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
+                                        labelId="demo-simple-select-label2"
                                         value={worstValue}
                                         label="worst"
                                         onChange={handleSelectChange}
@@ -88,25 +85,20 @@
                 </div>
                 <Stack justifyContent={'start'} spacing={4} direction='row'>
                     <Box width='20%'>
-                        <ThemeProvider theme={inputTheme}>
-                            <Input
-                                defaultValue={'-241,8%'}
-                                endAdornment={<InputAdornment position="start">Spread</InputAdornment>}
-                                aria-describedby="standard-weight-helper-text"
-                                inputProps={{
-                                // 'aria-label': 'weight',
-                                }}
-                                style={{height: 'fit-content'}}
-                            />
-                    </ThemeProvider>
+                        <Input
+                            defaultValue={'-241,8%'}
+                            aria-describedby="standard-weight-helper-text"
+                            inputProps={{
+                            }}
+                            style={{height: 'fit-content'}}
+                        />
+                        <h5 align='left'>Spread</h5>
                     </Box>
                     <Box width='20%'>
                     <Input
                         defaultValue={'+90%'}
-                        //endAdornment={<InputAdornment position="start">Price</InputAdornment>}
                         aria-describedby="standard-weight-helper-text"
                         inputProps={{
-                        // 'aria-label': 'weight',
                         }}
                         style={{height: 'fit-content'}}
                     />
@@ -115,10 +107,8 @@
                     <Box width='20%'>
                     <Input
                         defaultValue={'+11.253%'}
-                        //endAdornment={<InputAdornment position="start">Yield</InputAdornment>}
                         aria-describedby="standard-weight-helper-text"
                         inputProps={{
-                        // 'aria-label': 'weight',
                         }}
                         style={{height: 'fit-content'}}
                     />
@@ -146,29 +136,26 @@
                         </Stack>
                         <Box sx={{ minWidth: 120 }}>
                             <FormControl fullWidth>
-                            <InputLabel id='demo-simple-select-label'>Worst</InputLabel>
+                            <InputLabel id='demo-simple-select-label3'>Data type</InputLabel>
                                 <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
+                                    labelId="demo-simple-select-label3"
                                     value={worstValue}
                                     label="worst"
                                     onChange={handleSelectChange}
                                     style={{height: 'fit-content'}}
                                 >
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    <MenuItem value={10}>Worst</MenuItem>
+                                    <MenuItem value={20}>Best</MenuItem>
+                                    <MenuItem value={30}>Normal</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
-                        
                     </Stack>
                     </Box>
                 </Stack>
             </Paper>
-            </ThemeProvider>   
             <Stack direction='row' spacing={5} style={{marginTop: '20px'}}>
-                <Paper elevation={1} style={{padding: '20px'}}>
+                <Paper elevation={1} style={{padding: '20px', width: '50%'}}>
                     <h3 align='left'>
                         Calculated values
                     </h3>
@@ -189,10 +176,9 @@
                     <Stack direction='row' spacing={4} marginTop='16px'>
                         <Box width={'30%'}>
                             <FormControl fullWidth>
-                            <InputLabel id='demo-simple-select-label'>Sttl.Currency</InputLabel>
+                            <InputLabel id='demo-simple-select-label4'>Sttl.Currency</InputLabel>
                                 <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
+                                    labelId="demo-simple-select-label4"
                                     value={worstValue}
                                     label="Sttl.Currency"
                                     onChange={handleSelectChange}
@@ -215,7 +201,7 @@
                         </Box>
                     </Stack>
                 </Paper>
-                <Paper elevation={1} style={{padding: '20px'}}>
+                <Paper elevation={1} style={{padding: '20px', width: '50%'}}>
                     <h3 align='left'>
                         Invoice
                     </h3>
@@ -223,7 +209,6 @@
                         <Stack direction='row' spacing={4}>
                             <Box width={'33.33%'}>
                                 <TextField id="outlined-basic1" label={'Face*'} variant="outlined" defaultValue='10 000 000 M'/>
-                                {/* <CompareArrowsIcon/> */}
                             </Box>
                             <Box width={'33.33%'}>
                                 <TextField disabled id="outlined-basic2" label={'Sinc Factor'} variant="outlined" defaultValue='1'/>
@@ -255,10 +240,9 @@
                     <h5 align='left'>Calc To</h5>
                     <Stack direction={'row'} spacing={4}>
                         <FormControl fullWidth>
-                            <InputLabel id='demo-simple-select-label'>Interpolation</InputLabel>
+                            <InputLabel id='demo-simple-select-label5'>Interpolation</InputLabel>
                                 <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
+                                    labelId="demo-simple-select-label5"
                                     value={worstValue}
                                     label="Interpolation"
                                     onChange={handleSelectChange}
@@ -277,10 +261,9 @@
                 </Box>
                 <Box>
                     <FormControl fullWidth>
-                        <InputLabel id='demo-simple-select-label'>Кривая ОФЗ</InputLabel>
+                        <InputLabel id='demo-simple-select-label6'>Кривая ОФЗ</InputLabel>
                             <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
+                                labelId="demo-simple-select-label6"
                                 value={worstValue}
                                 label="Кривая ОФЗ"
                                 onChange={handleSelectChange}
@@ -293,6 +276,7 @@
                     </FormControl>
                     </Box>
             </Stack>
+            </ThemeProvider>
             {/* <Autocomplete
                 disablePortal
                 id="combo-box-demo"
@@ -321,8 +305,9 @@
                     data: [2, 5.5, 2, 8.5, 1.5, 5],
                     },
                 ]}
-                width={1200}
+                // width={1000}
                 height={500}
+                
             />
         </div>
     )

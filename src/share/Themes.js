@@ -12,6 +12,9 @@ export const fontColors = {
 }
 
 export const paperTheme = createTheme({ 
+  palette: {
+    mode: 'dark',
+  },
     components: {
       // Name of the component
       MuiPaper: {
@@ -33,10 +36,11 @@ export const paperTheme = createTheme({
             },
           },
       },
-      MuiInput: {
+      Input: {
         defaultProps:{
-          
+          color: 'success'
         },
+
         styleOverrides: {
           
           color: 'green',//fontColors.orange,
@@ -46,6 +50,7 @@ export const paperTheme = createTheme({
         },
         root: {
           color: 'green',
+          border: '3px solid #fff',
           "&:before": {
             borderBottomColor: "red"
           },
@@ -72,47 +77,4 @@ export const paperTheme = createTheme({
       },
     },
   });
-
-export const inputTheme = createTheme({
-  components: {
-    MuiInput: {
-      defaultProps:{
-          
-      },
-      styleOverrides: {
-        
-        color: 'green',//fontColors.orange,
-        fontSize: '58px',
-        lineHeight: '70px',
-        LineWeight: '200'
-      },
-      root: {
-        color: 'green',
-        "&:before": {
-          borderBottomColor: "red"
-        },
-        "&:hover:not(.Mui-focused):before": {
-          borderBottomColor: "green"
-        },
-        "&:after": {
-          // focused
-          borderBottomColor: "purple"
-        }
-      },
-      underline: {
-        "&:before": {
-          borderBottomColor: "red"
-        },
-        "&:hover:not(.Mui-focused):before": {
-          borderBottomColor: "green"
-        },
-        "&:after": {
-          // focused
-          borderBottomColor: "purple"
-        }
-      }
-    },
-    }
-  }
-)
   
