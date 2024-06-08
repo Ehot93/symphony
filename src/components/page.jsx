@@ -9,23 +9,29 @@
  import { DatePicker } from '@mui/x-date-pickers/DatePicker';
  import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
  import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
- import { useState } from "react";
+ import { useEffect, useState } from "react";
  import SyncIcon from '@mui/icons-material/Sync';
  import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
  import { ThemeProvider } from '@mui/material/styles';
+ import { useStore } from './store.js';
  import { paperTheme, fontColors } from '../share/Themes'
 
- 
+ //"@babel/plugin-proposal-private-property-in-object"
  const Page = () => {
+const { loadFrequencies } = useStore();
+const temp = () => {
+    loadFrequencies()
+}
+useEffect(()=>temp(),[])
     const options = [
         { label: 'The Godfather', id: 1 },
         { label: 'Pulp Fiction', id: 2 },
       ];
 
       const [valueDate, setValueDate] = useState();
-      const [worstValue, setWorstValue] = useState();
+      const [dateTypeValue, setDateTypeValue] = useState();
       const handleSelectChange = (event) => {
-        setWorstValue(event.target.value);
+        setDateTypeValue(event.target.value);
       }
 
     return(
@@ -42,11 +48,11 @@
                         <br />
                         <Stack direction={'row'} mt={2} spacing={2} >
                             <FormControl style={{borderRadius: '40px'}} fullWidth>
-                                <InputLabel id='demo-simple-select-label1'>Конвекция</InputLabel>
+                                <InputLabel id='demo-simple-select-label1'>DayCounter</InputLabel>
                                     <Select
                                         labelId="demo-simple-select-label1"
-                                        value={worstValue}
-                                        label="worst"
+                                        value={dateTypeValue}
+                                        label="dayCounter"
                                         onChange={handleSelectChange}
                                         style={{height: 'fit-content'}}
                                     >
@@ -56,10 +62,10 @@
                                     </Select>
                             </FormControl>
                             <FormControl fullWidth>
-                                <InputLabel id='demo-simple-select-label2'>Базис</InputLabel>
+                                <InputLabel id='demo-simple-select-label2'>Frequency</InputLabel>
                                     <Select
                                         labelId="demo-simple-select-label2"
-                                        value={worstValue}
+                                        value={dateTypeValue}
                                         label="worst"
                                         onChange={handleSelectChange}
                                         style={{height: 'fit-content'}}
@@ -122,7 +128,7 @@
                         <Stack direction={'column'} spacing={2}>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DatePicker
-                                    label="Wkout Date"
+                                    label="DateTo"
                                     value={valueDate}
                                     onChange={(newValue) => setValueDate(newValue)}
                                     
@@ -136,11 +142,11 @@
                         </Stack>
                         <Box sx={{ minWidth: 120 }}>
                             <FormControl fullWidth>
-                            <InputLabel id='demo-simple-select-label3'>Data type</InputLabel>
+                            <InputLabel id='demo-simple-select-label3'>Date type</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label3"
-                                    value={worstValue}
-                                    label="worst"
+                                    value={dateTypeValue}
+                                    label="dateType"
                                     onChange={handleSelectChange}
                                     style={{height: 'fit-content'}}
                                 >
