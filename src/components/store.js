@@ -2,45 +2,44 @@ import axios from 'axios'
 import { create } from 'zustand'
 
 export const useStore = create((set) => ({
-  dateTo: null,
-  dayCounter: null,
-  frequency: null,
-  curve: null,
-  currency: null,
-  dateType: null,
+  dateTo: [''],
+  dayCounter: [''],
+  frequency: [''],
+  curve: [''],
+  currency: [''],
+  dateType: [''],
+  instrumentSearch: null,
+  instrument: null,
   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
   removeAllBears: () => set({ bears: 0 }),
-  loadFrequencies: async (state) => {
-    try {
+  loadFrequencies: async () => {
         const response = await axios.get('http://172.22.130.217:7770/symphony/frequencies');
-        state.frequency = response.body;
-        console.log(response)
-    } catch (e) {
-        console.log(e)
-    }
+        set({frequency: response.data});
   },
-  loadDayCounter: async (state) => {
-    try {
+  loadDayCounter: async () => {
         const response = await axios.get('http://172.22.130.217:7770/symphony/daycounters');
-        state.dayCounter = response.body;
-    } catch (e) {
-        console.log(e);
-    }
+        set({dayCounter: response.data});
   },
-  loadDateToType: async (state) => {
-    try {
+  loadDateToType: async () => {
         const response = await axios.get('http://172.22.130.217:7770/symphony/datetotype');
-        state.dayType = response.body;
-    } catch (e) {
-        console.log(e)
-    }
+        set({dateTo: response.data});
   },
-  loadCurrency: async (state) => {
-    try {
+  loadCurrency: async () => {
         const response = await axios.get('http://172.22.130.217:7770/symphony/currencies');
-        state.currency = response.body;
-    } catch (e) {
-        console.log(e)
-    }
+        set({currency: response.data});
+  },
+  loadInstrumentSearch: async (value) =>
+  {
+        const response = await axios.get('http://172.22.130.217:7770/symphony/instrument/search', {
+            params: {
+                sample: value,//options.sample,
+                quantity: 10//options.quantity
+            }
+        });
+        set({instrumentSearch: response.data});
+  },
+  loadInstrument: async (value) => {
+    const response = await axios.get(`http://172.22.130.217:7770/symphony/instrument/${value}`);
+    set({instrument: response.data});
   }
 }))
